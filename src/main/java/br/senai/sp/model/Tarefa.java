@@ -19,7 +19,7 @@ public class Tarefa {
 	private Long id;
 	private String titulo;
 	@OneToMany(mappedBy = "tarefa", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<SubTarefa> subTarefas;
+	private List<SubTarefa> subtarefas;
 
 	public Long getId() {
 		return id;
@@ -37,17 +37,17 @@ public class Tarefa {
 		this.titulo = titulo;
 	}
 
-	public List<SubTarefa> getSubTarefas() {
-		return subTarefas;
+	public List<SubTarefa> getSubtarefas() {
+		return subtarefas;
 	}
 
-	public void setSubTarefas(List<SubTarefa> subTarefas) {
-		this.subTarefas = subTarefas;
+	public void setSubtarefas(List<SubTarefa> subtarefas) {
+		this.subtarefas = subtarefas;
 	}
 
 	@JsonProperty("feita")
 	public boolean isRealizada() {
-		for (SubTarefa subTarefa : subTarefas) {
+		for (SubTarefa subTarefa : subtarefas) {
 			if (!subTarefa.isFeita()) {
 				return false;
 			}

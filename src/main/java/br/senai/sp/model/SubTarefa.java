@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties("tarefa")
 @Entity
@@ -17,6 +18,7 @@ public class SubTarefa {
 	private Long id;
 	@Size(min=3, message="A descrição deve ter pelo menos 3 caracteres")
 	private String descricao;
+	@JsonProperty("feito")
 	private boolean feita;
 	@ManyToOne
 	private Tarefa tarefa;

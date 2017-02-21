@@ -27,7 +27,7 @@ public class TarefaController {
 	@RequestMapping(value = "/tarefa", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Tarefa> criarTarefa(@RequestBody Tarefa tarefa) {
 		try {
-			for (SubTarefa subTarefa : tarefa.getSubTarefas()) {
+			for (SubTarefa subTarefa : tarefa.getSubtarefas()) {
 				subTarefa.setTarefa(tarefa);
 			}
 			daoTarefa.inserir(tarefa);
@@ -43,7 +43,6 @@ public class TarefaController {
 
 	@RequestMapping(value = "/tarefa/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
 	public Tarefa buscarTarefa(@PathVariable Long id) {
-		System.out.println("listo");
 		return daoTarefa.buscar(id);
 	}
 
